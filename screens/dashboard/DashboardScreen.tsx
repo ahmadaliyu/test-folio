@@ -67,15 +67,7 @@ export default function DashboardScreen({ navigation }: Props) {
               ]}
             >
               <AppText
-                title={item.name}
-                color="#fff"
-                fontSize={wp(4.5)}
-                fontFamily="gilroy-semiBold"
-                textAlign="center"
-                lineHeight={30}
-              />
-              <AppText
-                title={item.company.name}
+                title={`${item.firstName + "," + item.age}`}
                 color="#fff"
                 fontSize={wp(4.5)}
                 fontFamily="gilroy-semiBold"
