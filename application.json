@@ -1,0 +1,5 @@
+{
+  "env": "development",
+
+  "api_service_base_url": "https://dummyjson.com/"
+}
