@@ -23,7 +23,7 @@ export type RootStackParamList = {
 
 export type DashboardStackParamList = {
   DashboardScreen: undefined;
-  DetailScreen: undefined;
+  DetailScreen: { data: object } | undefined;
 };
 
 export type Prop = StackScreenProps<RootStackParamList>;

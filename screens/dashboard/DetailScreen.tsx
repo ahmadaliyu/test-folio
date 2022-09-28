@@ -1,4 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
+import { useRoute } from "@react-navigation/native";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { Actionsheet, Center, Modal, useDisclose } from "native-base";
 import * as React from "react";
 import { StyleSheet, View, TouchableOpacity, StatusBar } from "react-native";
@@ -8,9 +10,12 @@ import {
 } from "react-native-responsive-screen";
 import AppText from "../../components/reusables/AppText";
 import Colors from "../../constants/Colors";
-import { DashboardScreenProps } from "../../types";
+import { DashboardScreenProps, DashboardStackParamList } from "../../types";
 
-const DetailScreen = ({ navigation }: DashboardScreenProps) => {
+type Props = NativeStackScreenProps<DashboardStackParamList, "DetailScreen">;
+const DetailScreen = ({ navigation, route }: Props) => {
+  console.log(route.params?.data);
+  const item = route.params?.data;
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor={"#fff"} />
@@ -21,6 +26,12 @@ const DetailScreen = ({ navigation }: DashboardScreenProps) => {
         >
           <Ionicons name="ios-chevron-back-outline" size={wp(6)} color="#333" />
         </TouchableOpacity>
+      </View>
+      <View style={{ marginHorizontal: "5%" }}>
+        <AppText title="User Profile" m="2%" fontSize={wp(4.5)} />
+        <AppText title={`firstname: ${item.firstName}`} />
+        <AppText title={`Lastname: ${item.lastName}`} />
+        <AppText title={`age: ${item.age}`} />
       </View>
     </View>
   );

@@ -7,7 +7,7 @@ import {
   FlatList,
   ImageBackground,
 } from "react-native";
-import { DashboardScreenProps } from "../../types";
+import { DashboardScreenProps, DashboardStackParamList } from "../../types";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -21,8 +21,11 @@ import {
 } from "../../redux/services/apiService";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 
-export default function DashboardScreen({ navigation }: DashboardScreenProps) {
+type Props = NativeStackScreenProps<DashboardStackParamList, "DashboardScreen">;
+
+export default function DashboardScreen({ navigation }: Props) {
   const { data } = useGetUserProfileQuery();
   // console.log(222, data);
   const dispatch = useDispatch();
@@ -50,7 +53,9 @@ export default function DashboardScreen({ navigation }: DashboardScreenProps) {
           data={data?.users}
           renderItem={({ item }) => (
             <TouchableOpacity
-              onPress={() => navigation.navigate("DetailScreen")}
+              onPress={() =>
+                navigation.navigate("DetailScreen", { data: item })
+              }
               style={[
                 styles.touchable,
                 {
