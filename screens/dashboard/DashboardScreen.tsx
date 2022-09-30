@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   FlatList,
   ImageBackground,
+  ToastAndroid,
 } from "react-native";
 import { DashboardScreenProps, DashboardStackParamList } from "../../types";
 import {
